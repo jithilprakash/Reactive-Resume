@@ -53,6 +53,11 @@ input[type='range']::-webkit-slider-thumb {
   transform: translate(-50%, -50%);
 }
 
+
+#leftSidebar{
+  background-color: #353a3c;
+}
+
 @media screen {
   input[type='number']::-webkit-inner-spin-button,
   input[type='number']::-webkit-outer-spin-button {

@@ -6,6 +6,8 @@ import remove from 'lodash/remove';
 import demoData from '../assets/demo/data.json';
 import { move } from '../utils';
 
+
+
 const initialState = {
   data: {
     profile: {
@@ -88,6 +90,11 @@ const initialState = {
   settings: {
     language: 'en',
   },
+  appState: false,
+  authentication: {
+    status: false,
+    username: null
+  }
 };
 
 const reducer = (state, { type, payload }) => {
@@ -135,6 +142,12 @@ const reducer = (state, { type, payload }) => {
         ...state,
         ...demoData,
       };
+    case 'loader_status':
+      console.log("loader status been called",payload)
+      return {
+        ...state,
+        appState: payload
+      }
     case 'reset':
       return initialState;
     default:
@@ -145,9 +158,15 @@ const reducer = (state, { type, payload }) => {
 const AppContext = createContext(initialState);
 const { Provider } = AppContext;
 
+
+
+
+
 const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  return <Provider value={{ state, dispatch }}>{children}</Provider>;
+  return (
+
+    <Provider value={{ state, dispatch }}>{children}</Provider>);
 };
 
 export const AppProvider = StateProvider;

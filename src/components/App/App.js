@@ -63,7 +63,6 @@ const App = () => {
         </div>
 
         <RightSidebar />
-
         <PanZoomAnimation />
         <PrintDialog />
       </div>
